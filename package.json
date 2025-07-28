@@ -1,0 +1,41 @@
+{
+    "name": "pump-tracker",
+    "version": "1.0.0",
+    "description": "Manufacturing job tracking and scheduling system",
+    "private": true,
+    "workspaces": [
+        "frontend",
+        "backend"
+    ],
+    "scripts": {
+        "install:all": "npm install && npm install --prefix frontend && npm install --prefix backend",
+        "generate-ssl": "node generate-ssl.js",
+        "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+        "dev:https": "concurrently \"npm run backend:https\" \"npm run frontend:https\"",
+        "dev:docker": "docker-compose up --build",
+        "dev:down": "docker-compose down",
+        "dev:clean": "docker-compose down -v",
+        "frontend": "npm start --prefix frontend",
+        "frontend:https": "set HTTPS=true && npm start --prefix frontend",
+        "backend": "npm run dev --prefix backend",
+        "backend:https": "npm run dev:https --prefix backend",
+        "build": "npm run build --prefix frontend && npm run build --prefix backend",
+        "test": "npm test --prefix frontend && npm test --prefix backend",
+        "lint": "npm run lint --prefix frontend && npm run lint --prefix backend",
+        "lint:fix": "npm run lint:fix --prefix frontend && npm run lint:fix --prefix backend",
+        "format": "npm run format --prefix frontend && npm run format --prefix backend"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.0"
+    },
+    "keywords": [
+        "manufacturing",
+        "kanban",
+        "tracking",
+        "scheduling",
+        "react",
+        "nodejs"
+    ],
+    "author": "Your Name",
+    "license": "MIT"
+}
